@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التحقق من أصالة المنتج | Product Verification</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Tahoma, Arial, sans-serif;
+}
+
+body{
+background:#f4f6f9;
+padding:30px 15px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+background:#ffffff;
+border-radius:20px;
+padding:40px;
+box-shadow:0 5px 25px rgba(0,0,0,.08);
+}
+
+.logo{
+display:block;
+width:140px;
+margin:0 auto 20px;
+}
+
+.company-name{
+text-align:center;
+font-size:34px;
+font-weight:bold;
+color:#1b365d;
+}
+
+.company-en{
+text-align:center;
+font-size:18px;
+color:#777;
+margin-top:8px;
+margin-bottom:25px;
+}
+
+.verified{
+background:#e8f7ec;
+border:2px solid #b7e4c7;
+color:#0f8a3f;
+padding:25px;
+border-radius:12px;
+text-align:center;
+font-size:32px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.verified-en{
+text-align:center;
+color:#0f8a3f;
+font-size:18px;
+margin-bottom:30px;
+}
+
+.table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+.table td{
+padding:18px;
+border:1px solid #e5e5e5;
+font-size:18px;
+}
+
+.label{
+font-weight:bold;
+background:#fafafa;
+width:35%;
+}
+
+.note{
+margin-top:35px;
+padding:20px;
+background:#f9fafb;
+border-radius:10px;
+line-height:2;
+text-align:center;
+color:#555;
+}
+
+.badge{
+display:inline-block;
+margin-top:20px;
+background:#0f8a3f;
+color:#fff;
+padding:10px 25px;
+border-radius:30px;
+font-weight:bold;
+}
+
+.footer{
+margin-top:25px;
+text-align:center;
+color:#888;
+line-height:2;
+}
+
+.whatsapp{
+display:inline-block;
+margin-top:20px;
+text-decoration:none;
+background:#25d366;
+color:white;
+padding:14px 30px;
+border-radius:8px;
+font-size:18px;
+font-weight:bold;
+}
+
+@media(max-width:768px){
+
+.company-name{
+font-size:26px;
+}
+
+.table td{
+font-size:16px;
+padding:12px;
+}
+
+.verified{
+font-size:23px;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<img src="logo.png" class="logo">
+
+<div class="company-name">
+مزايا الأندلس للتجارة
+</div>
+
+<div class="company-en">
+Mazaya Al Andalus Trading
+</div>
+
+<div class="verified">
+✅ تم التحقق من أصالة المنتج
+</div>
+
+<div class="verified-en">
+Product Successfully Verified
+</div>
+
+<table class="table">
+
+<tr>
+<td class="label">اسم المنتج<br>Product Name</td>
+<td id="productName">كحل الاثمد رؤية الاصلي <br> Al-‘Atham Kohl, original version</td>
+</tr>
+
+<tr>
+<td class="label">رقم المنتج<br>Product Code</td>
+<td id="productId"></td>
+</tr>
+
+<tr>
+<td class="label">الحالة<br>Status</td>
+<td>✅ أصلي<br>Authentic Product</td>
+</tr>
+
+<tr>
+<td class="label">تاريخ التحقق<br>Verification Date</td>
+<td id="verifyDate"></td>
+</tr>
+
+<tr>
+<td class="label">بلد المنشأ<br>Country of Origin</td>
+<td>المملكة العربية السعودية<br>Saudi Arabia</td>
+</tr>
+
+</table>
+
+<div class="note">
+
+نشكركم على ثقتكم بمنتجات مزايا الأندلس للتجارة.<br>
+تم التحقق من هذا المنتج عبر نظام التحقق الرسمي للشركة.
+
+<br><br>
+
+Thank you for choosing Mazaya Al Andalus Trading.<br>
+This product has been verified through the company's official authentication system.
+
+<div class="badge">
+CERTIFIED AUTHENTIC PRODUCT
+</div>
+
+</div>
+
+<div class="footer">
+
+المدينة المنورة - المملكة العربية السعودية<br>
+Al Madinah - Saudi Arabia
+
+<br>
+
+<a class="whatsapp"
+href="https://wa.me/966500000000">
+تواصل معنا | Contact Us
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+const validProducts = [
+"BR1001",
+"BR1002",
+"BR1003",
+"BR1004",
+"BR1005",
+"BR1006"
+];
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+document.getElementById("productId").innerHTML =
+id || "N/A";
+
+document.getElementById("verifyDate").innerHTML =
+new Date().toLocaleString('ar-SA');
+
+if(id && !validProducts.includes(id))
+{
+document.querySelector(".verified").innerHTML =
+"❌ المنتج غير موجود";
+
+document.querySelector(".verified-en").innerHTML =
+"Product Not Found";
+}
+
+</script>
+
+</body>
+</html>
