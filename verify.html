@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>التحقق من أصالة المنتج | Product Verification</title>
+
+<title>شهادة أصالة المنتج | Product Authenticity Certificate</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Tahoma, Arial, sans-serif;
+font-family:Tahoma,Arial,sans-serif;
 }
 
 body{
-background:#f4f6f9;
-padding:30px 15px;
+background:#f5f6f8;
+padding:20px;
 }
 
 .container{
 max-width:900px;
 margin:auto;
-background:#ffffff;
+background:#fff;
 border-radius:20px;
 padding:40px;
 box-shadow:0 5px 25px rgba(0,0,0,.08);
@@ -29,79 +32,108 @@ box-shadow:0 5px 25px rgba(0,0,0,.08);
 
 .logo{
 display:block;
-width:140px;
-margin:0 auto 20px;
+width:130px;
+margin:auto;
+margin-bottom:20px;
+}
+
+.product-image{
+text-align:center;
+margin-bottom:25px;
+}
+
+.product-image img{
+width:280px;
+max-width:100%;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.15);
 }
 
 .company-name{
 text-align:center;
-font-size:34px;
+font-size:32px;
 font-weight:bold;
-color:#1b365d;
+color:#1c2d48;
 }
 
 .company-en{
 text-align:center;
-font-size:18px;
 color:#777;
-margin-top:8px;
+margin-top:10px;
+margin-bottom:25px;
+font-size:18px;
+}
+
+.verify-box{
+background:#eaf7ed;
+border:2px solid #bfe5c9;
+border-radius:12px;
+padding:25px;
+text-align:center;
 margin-bottom:25px;
 }
 
-.verified{
-background:#e8f7ec;
-border:2px solid #b7e4c7;
-color:#0f8a3f;
-padding:25px;
-border-radius:12px;
-text-align:center;
-font-size:32px;
+.verify-title{
+font-size:30px;
 font-weight:bold;
-margin-bottom:10px;
+color:#0b8f48;
 }
 
-.verified-en{
-text-align:center;
-color:#0f8a3f;
+.verify-en{
+margin-top:10px;
 font-size:18px;
-margin-bottom:30px;
+color:#0b8f48;
 }
 
-.table{
+table{
 width:100%;
 border-collapse:collapse;
-margin-top:20px;
+margin-top:15px;
 }
 
-.table td{
-padding:18px;
+td{
+padding:15px;
 border:1px solid #e5e5e5;
-font-size:18px;
 }
 
 .label{
-font-weight:bold;
 background:#fafafa;
+font-weight:bold;
 width:35%;
 }
 
 .note{
-margin-top:35px;
+margin-top:25px;
+background:#fafafa;
 padding:20px;
-background:#f9fafb;
-border-radius:10px;
-line-height:2;
+border-radius:12px;
 text-align:center;
+line-height:2;
 color:#555;
 }
 
 .badge{
 display:inline-block;
-margin-top:20px;
-background:#0f8a3f;
+margin-top:15px;
+padding:12px 25px;
+background:#0b8f48;
 color:#fff;
-padding:10px 25px;
 border-radius:30px;
+font-weight:bold;
+}
+
+.contact{
+text-align:center;
+margin-top:25px;
+}
+
+.contact a{
+display:inline-block;
+background:#25D366;
+color:#fff;
+padding:14px 28px;
+border-radius:8px;
+text-decoration:none;
 font-weight:bold;
 }
 
@@ -112,97 +144,114 @@ color:#888;
 line-height:2;
 }
 
-.whatsapp{
-display:inline-block;
-margin-top:20px;
-text-decoration:none;
-background:#25d366;
-color:white;
-padding:14px 30px;
-border-radius:8px;
-font-size:18px;
+.loading{
+color:#ff9800;
 font-weight:bold;
 }
 
-@media(max-width:768px){
-
-.company-name{
-font-size:26px;
-}
-
-.table td{
-font-size:16px;
-padding:12px;
-}
-
-.verified{
-font-size:23px;
-}
-
-}
 </style>
-
 </head>
+
 <body>
 
 <div class="container">
 
 <img src="logo.png" class="logo">
 
+<div class="product-image">
+<img src="product.jpg" alt="Al-Atham Kohl">
+</div>
+
 <div class="company-name">
-مزايا الأندلس للتجارة
+تميز وإبداع
 </div>
 
 <div class="company-en">
-Mazaya Al Andalus Trading
+Tamayuz & Ibda
 </div>
 
-<div class="verified">
-✅ تم التحقق من أصالة المنتج
+<div class="verify-box">
+
+<div id="verifyTitle" class="verify-title loading">
+جارٍ التحقق...
 </div>
 
-<div class="verified-en">
-Product Successfully Verified
+<div id="verifyTitleEn" class="verify-en">
+Verifying Product...
 </div>
 
-<table class="table">
+</div>
+
+<table>
 
 <tr>
-<td class="label">اسم المنتج<br>Product Name</td>
-<td id="productName">كحل الاثمد رؤية الاصلي <br> Al-‘Atham Kohl, original version</td>
+<td class="label">
+اسم المنتج<br>
+Product Name
+</td>
+
+<td>
+كحل الإثمد رؤية الأصلي
+<br>
+Al-'Atham Kohl, Original Version
+</td>
 </tr>
 
 <tr>
-<td class="label">رقم المنتج<br>Product Code</td>
-<td id="productId"></td>
+<td class="label">
+رقم التحقق<br>
+Verification Code
+</td>
+
+<td id="productId">
+-
+</td>
 </tr>
 
 <tr>
-<td class="label">الحالة<br>Status</td>
-<td>✅ أصلي<br>Authentic Product</td>
+<td class="label">
+الحالة<br>
+Status
+</td>
+
+<td id="statusText">
+جارٍ التحقق...
+</td>
 </tr>
 
 <tr>
-<td class="label">تاريخ التحقق<br>Verification Date</td>
-<td id="verifyDate"></td>
+<td class="label">
+تاريخ التحقق<br>
+Verification Date
+</td>
+
+<td id="verifyDate">
+-
+</td>
 </tr>
 
 <tr>
-<td class="label">بلد المنشأ<br>Country of Origin</td>
-<td>المملكة العربية السعودية<br>Saudi Arabia</td>
+<td class="label">
+بلد المنشأ<br>
+Country of Origin
+</td>
+
+<td>
+المملكة العربية السعودية
+<br>
+Saudi Arabia
+</td>
 </tr>
 
 </table>
 
 <div class="note">
 
-نشكركم على ثقتكم بمنتجات مزايا الأندلس للتجارة.<br>
 تم التحقق من هذا المنتج عبر نظام التحقق الرسمي للشركة.
 
 <br><br>
 
-Thank you for choosing Mazaya Al Andalus Trading.<br>
-This product has been verified through the company's official authentication system.
+This product has been authenticated through the company's official verification system.
 
 <div class="badge">
 CERTIFIED AUTHENTIC PRODUCT
@@ -210,17 +259,19 @@ CERTIFIED AUTHENTIC PRODUCT
 
 </div>
 
-<div class="footer">
+<div class="contact">
 
-المدينة المنورة - المملكة العربية السعودية<br>
-Al Madinah - Saudi Arabia
-
-<br>
-
-<a class="whatsapp"
-href="https://wa.me/966500000000">
+<a href="https://wa.me/966500000000">
 تواصل معنا | Contact Us
 </a>
+
+</div>
+
+<div class="footer">
+
+المدينة المنورة - المملكة العربية السعودية
+<br>
+Al Madinah - Saudi Arabia
 
 </div>
 
@@ -228,32 +279,92 @@ href="https://wa.me/966500000000">
 
 <script>
 
-const validProducts = [
-"BR1001",
-"BR1002",
-"BR1003",
-"BR1004",
-"BR1005",
-"BR1006"
-];
+const SHEET_CSV =
+"https://docs.google.com/spreadsheets/d/1T8CPew_isZDn9yJ6Pv5fylUtTq7Q_O77oJqX0Ngz6Qg/export?format=csv";
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 document.getElementById("productId").innerHTML =
-id || "N/A";
+id || "غير متوفر";
 
 document.getElementById("verifyDate").innerHTML =
 new Date().toLocaleString('ar-SA');
 
-if(id && !validProducts.includes(id))
-{
-document.querySelector(".verified").innerHTML =
-"❌ المنتج غير موجود";
+async function verifyCode() {
 
-document.querySelector(".verified-en").innerHTML =
-"Product Not Found";
+if (!id) {
+showInvalid();
+return;
 }
+
+try {
+
+const response = await fetch(SHEET_CSV);
+const csv = await response.text();
+
+const rows = csv.split("\n");
+
+const found = rows.some(row => {
+
+const code = row
+.replace(/"/g,"")
+.replace(/\r/g,"")
+.trim();
+
+return code === id;
+
+});
+
+if(found){
+showValid();
+}
+else{
+showInvalid();
+}
+
+}
+catch(error){
+
+document.getElementById("verifyTitle").innerHTML =
+"⚠️ تعذر التحقق";
+
+document.getElementById("verifyTitleEn").innerHTML =
+"Verification Error";
+
+document.getElementById("statusText").innerHTML =
+"خطأ في الاتصال";
+}
+
+}
+
+function showValid(){
+
+document.getElementById("verifyTitle").innerHTML =
+"✅ شهادة أصالة المنتج";
+
+document.getElementById("verifyTitleEn").innerHTML =
+"Product Authenticity Certificate";
+
+document.getElementById("statusText").innerHTML =
+"✅ منتج أصلي معتمد<br>Certified Authentic Product";
+
+}
+
+function showInvalid(){
+
+document.getElementById("verifyTitle").innerHTML =
+"❌ كود التحقق غير صالح";
+
+document.getElementById("verifyTitleEn").innerHTML =
+"Invalid Verification Code";
+
+document.getElementById("statusText").innerHTML =
+"غير معتمد<br>Not Authentic";
+
+}
+
+verifyCode();
 
 </script>
 
