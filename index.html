@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>شهادة أصالة المنتج</title>
+<title>روائح الحرمين</title>
 
 <style>
 
@@ -16,336 +15,231 @@ font-family:Tahoma,Arial,sans-serif;
 }
 
 body{
-background:#f5f6f8;
-padding:20px;
+background:#f8f8f8;
+color:#222;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px;
+background:
+linear-gradient(rgba(255,255,255,.92),
+rgba(255,255,255,.92)),
+url("product.jpg");
+background-size:cover;
+background-position:center;
 }
 
 .container{
-max-width:900px;
-margin:auto;
-background:#fff;
-padding:40px;
-border-radius:20px;
-box-shadow:0 5px 25px rgba(0,0,0,.08);
+max-width:1000px;
 }
 
 .logo{
-display:block;
-width:130px;
-margin:0 auto 20px;
+width:180px;
+margin-bottom:20px;
 }
 
-.product-image{
-text-align:center;
-margin-bottom:25px;
+h1{
+font-size:52px;
+margin-bottom:10px;
+color:#2d2d2d;
 }
 
-.product-image img{
-width:300px;
-max-width:100%;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.15);
+h2{
+font-size:22px;
+font-weight:normal;
+color:#8b6d2f;
+margin-bottom:30px;
 }
 
-.company{
-text-align:center;
-font-size:34px;
-font-weight:bold;
-color:#183153;
-}
-
-.company-en{
-text-align:center;
-font-size:18px;
-color:#777;
-margin-top:10px;
-margin-bottom:25px;
-}
-
-.verify-box{
-background:#eaf9ef;
-border:2px solid #bce4ca;
-padding:25px;
-border-radius:15px;
-text-align:center;
-margin-bottom:25px;
-}
-
-.verify-title{
-font-size:34px;
-font-weight:bold;
-color:#0b8f48;
-}
-
-.verify-en{
-font-size:18px;
-margin-top:10px;
-color:#0b8f48;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:15px;
-}
-
-td{
-padding:15px;
-border:1px solid #e5e5e5;
-}
-
-.label{
-background:#fafafa;
-font-weight:bold;
-width:35%;
-}
-
-.note{
-margin-top:20px;
-padding:25px;
-background:#fafafa;
-border-radius:12px;
-text-align:center;
+.description{
+font-size:21px;
 line-height:2;
+max-width:800px;
+margin:auto;
 color:#555;
 }
 
-.badge{
+.buttons{
+margin-top:35px;
+}
+
+.btn{
 display:inline-block;
-margin-top:15px;
-background:#0b8f48;
-color:#fff;
-padding:12px 25px;
-border-radius:30px;
+margin:10px;
+padding:15px 35px;
+border-radius:10px;
+text-decoration:none;
 font-weight:bold;
+font-size:18px;
+transition:.3s;
+}
+
+.btn-primary{
+background:#8b6d2f;
+color:white;
+}
+
+.btn-primary:hover{
+background:#6f5523;
+}
+
+.btn-outline{
+border:2px solid #8b6d2f;
+color:#8b6d2f;
+}
+
+.btn-outline:hover{
+background:#8b6d2f;
+color:white;
+}
+
+.features{
+padding:80px 20px;
+background:white;
+}
+
+.features h3{
+text-align:center;
+font-size:35px;
+margin-bottom:40px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+max-width:1200px;
+margin:auto;
+}
+
+.card{
+background:#fafafa;
+padding:25px;
+border-radius:15px;
+box-shadow:0 3px 10px rgba(0,0,0,.06);
+text-align:center;
+}
+
+.card h4{
+margin-bottom:15px;
+color:#8b6d2f;
+}
+
+.footer{
+background:#222;
+color:white;
+padding:40px;
+text-align:center;
+line-height:2;
+}
+
+@media(max-width:768px){
+
+h1{
+font-size:36px;
+}
+
+.description{
+font-size:18px;
+}
+
+.logo{
+width:130px;
+}
+
 }
 
 </style>
-
 </head>
 
 <body>
+
+<section class="hero">
 
 <div class="container">
 
 <img src="logo.png" class="logo">
 
-<div class="product-image">
-<img src="product.jpg" alt="Product">
-</div>
+<h1>روائح الحرمين</h1>
 
-<div class="company">
-تميز وإبداع
-</div>
+<h2>Rwaeh Al Haramain</h2>
 
-<div class="company-en">
-Tamayuz & Ibda
-</div>
+<p class="description">
+نقدم منتجات مختارة بعناية من العطور والبخور والكحل الأصيل،
+مع نظام إلكتروني للتحقق من أصالة المنتج يضمن الثقة والجودة لعملائنا.
+</p>
 
-<div class="verify-box">
+<div class="buttons">
 
-<div id="verifyTitle" class="verify-title">
-جاري التحقق...
-</div>
+<a class="btn btn-primary" href="verify.html">
+التحقق من المنتج
+</a>
 
-<div id="verifyTitleEn" class="verify-en">
-Verifying Product...
-</div>
+<a class="btn btn-outline"
+href="https://wa.me/966500000000">
+تواصل معنا
+</a>
 
 </div>
 
-<table>
+</div>
 
-<tr>
-<td class="label">
-اسم المنتج<br>
-Product Name
-</td>
+</section>
 
-<td>
-كحل الإثمد رؤية الأصلي<br>
-Al-'Atham Kohl, Original Version
-</td>
-</tr>
+<section class="features">
 
-<tr>
-<td class="label">
-رقم التحقق<br>
-Verification Code
-</td>
+<h3>لماذا روائح الحرمين ؟</h3>
 
-<td id="productId">-</td>
-</tr>
+<div class="grid">
 
-<tr>
-<td class="label">
-رقم التشغيلة<br>
-Batch
-</td>
+<div class="card">
+<h4>منتجات أصلية</h4>
+<p>
+جميع المنتجات تخضع لنظام تحقق إلكتروني.
+</p>
+</div>
 
-<td id="batch">-</td>
-</tr>
+<div class="card">
+<h4>جودة موثوقة</h4>
+<p>
+منتجات مختارة بعناية وفق معايير عالية.
+</p>
+</div>
 
-<tr>
-<td class="label">
-الحالة<br>
-Status
-</td>
+<div class="card">
+<h4>تحقق إلكتروني</h4>
+<p>
+إمكانية التحقق من أصالة المنتج عبر QR Code.
+</p>
+</div>
 
-<td id="statusText">-</td>
-</tr>
+<div class="card">
+<h4>دعم العملاء</h4>
+<p>
+خدمة عملاء جاهزة للرد على الاستفسارات.
+</p>
+</div>
 
-<tr>
-<td class="label">
-تاريخ التحقق<br>
-Verification Date
-</td>
+</div>
 
-<td id="verifyDate"></td>
-</tr>
+</section>
 
-</table>
+<footer class="footer">
 
-<div class="note">
+روائح الحرمين<br>
 
-تم التحقق من هذا المنتج عبر النظام الرسمي لشركة تميز وإبداع.
+Rwaeh Al Haramain
 
 <br><br>
 
-This product has been authenticated through the official verification system.
+المدينة المنورة - المملكة العربية السعودية
 
-<div class="badge">
-CERTIFIED AUTHENTIC PRODUCT
-</div>
-
-</div>
-
-</div>
-
-<script>
-
-const SHEET_CSV =
-"https://docs.google.com/spreadsheets/d/1T8CPew_isZDn9yJ6Pv5fylUtTq7Q_O77oJqX0Ngz6Qg/export?format=csv";
-
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
-
-document.getElementById("productId").innerText =
-id || "غير متوفر";
-
-document.getElementById("verifyDate").innerText =
-new Date().toLocaleString('ar-SA');
-
-async function verifyCode(){
-
-if(!id){
-showInvalid();
-return;
-}
-
-try{
-
-const response = await fetch(SHEET_CSV);
-const csv = await response.text();
-
-const rows = csv.split("\n");
-
-let foundRow = null;
-
-for(let i = 1 ; i < rows.length ; i++){
-
-let cols = rows[i]
-.replace(/\r/g,"")
-.replace(/"/g,"")
-.split(",");
-
-if(cols.length >= 3){
-
-let code = cols[0].trim();
-
-if(code === id){
-
-foundRow = cols;
-break;
-
-}
-
-}
-
-}
-
-if(foundRow){
-
-const batch = foundRow[1].trim();
-const status = foundRow[2].trim();
-
-document.getElementById("batch").innerText = batch;
-
-if(status.toLowerCase() === "active"){
-
-showValid();
-
-document.getElementById("statusText").innerHTML =
-"✅ Active<br>نشط ومعتمد";
-
-}
-else{
-
-document.getElementById("verifyTitle").innerHTML =
-"⚠️ تم إيقاف هذا الكود";
-
-document.getElementById("verifyTitleEn").innerHTML =
-"Verification Code Blocked";
-
-document.getElementById("statusText").innerHTML =
-"❌ Blocked";
-
-}
-
-}
-else{
-showInvalid();
-}
-
-}
-catch(error){
-
-document.getElementById("verifyTitle").innerHTML =
-"⚠️ تعذر التحقق";
-
-document.getElementById("verifyTitleEn").innerHTML =
-"Verification Error";
-
-}
-
-}
-
-function showValid(){
-
-document.getElementById("verifyTitle").innerHTML =
-"✅ شهادة أصالة المنتج";
-
-document.getElementById("verifyTitleEn").innerHTML =
-"Product Authenticity Certificate";
-
-}
-
-function showInvalid(){
-
-document.getElementById("verifyTitle").innerHTML =
-"❌ يرجى الحذر هذا المنتج غير اصلي";
-
-document.getElementById("verifyTitleEn").innerHTML =
-"Invalid Verification Code";
-
-document.getElementById("statusText").innerHTML =
-"غير معتمد";
-
-}
-
-verifyCode();
-
-</script>
+</footer>
 
 </body>
 </html>
