@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>روائح الحرمين</title>
 
 <style>
@@ -15,7 +16,7 @@ font-family:Tahoma,Arial,sans-serif;
 }
 
 body{
-background:#f8f8f8;
+background:#f7f7f7;
 color:#222;
 }
 
@@ -25,11 +26,12 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding:40px;
-background:
-linear-gradient(rgba(255,255,255,.92),
-rgba(255,255,255,.92)),
-url("product.jpg");
+padding:40px 20px;
+background:linear-gradient(
+rgba(255,255,255,0.92),
+rgba(255,255,255,0.92)
+),
+url('product.jpg');
 background-size:cover;
 background-position:center;
 }
@@ -40,27 +42,27 @@ max-width:1000px;
 
 .logo{
 width:180px;
-margin-bottom:20px;
+margin-bottom:25px;
 }
 
 h1{
-font-size:52px;
+font-size:55px;
+color:#222;
 margin-bottom:10px;
-color:#2d2d2d;
 }
 
 h2{
 font-size:22px;
+color:#9c7b39;
 font-weight:normal;
-color:#8b6d2f;
 margin-bottom:30px;
 }
 
 .description{
-font-size:21px;
-line-height:2;
-max-width:800px;
+max-width:850px;
 margin:auto;
+font-size:22px;
+line-height:2;
 color:#555;
 }
 
@@ -70,42 +72,42 @@ margin-top:35px;
 
 .btn{
 display:inline-block;
-margin:10px;
 padding:15px 35px;
+margin:10px;
 border-radius:10px;
 text-decoration:none;
-font-weight:bold;
 font-size:18px;
+font-weight:bold;
 transition:.3s;
 }
 
 .btn-primary{
-background:#8b6d2f;
+background:#9c7b39;
 color:white;
 }
 
 .btn-primary:hover{
-background:#6f5523;
+background:#7d622d;
 }
 
 .btn-outline{
-border:2px solid #8b6d2f;
-color:#8b6d2f;
+border:2px solid #9c7b39;
+color:#9c7b39;
 }
 
 .btn-outline:hover{
-background:#8b6d2f;
+background:#9c7b39;
 color:white;
 }
 
 .features{
-padding:80px 20px;
 background:white;
+padding:80px 20px;
 }
 
 .features h3{
 text-align:center;
-font-size:35px;
+font-size:38px;
 margin-bottom:40px;
 }
 
@@ -121,19 +123,23 @@ margin:auto;
 background:#fafafa;
 padding:25px;
 border-radius:15px;
-box-shadow:0 3px 10px rgba(0,0,0,.06);
+box-shadow:0 3px 12px rgba(0,0,0,.06);
 text-align:center;
 }
 
 .card h4{
+color:#9c7b39;
 margin-bottom:15px;
-color:#8b6d2f;
+}
+
+.card p{
+line-height:1.8;
 }
 
 .footer{
-background:#222;
+background:#1f1f1f;
 color:white;
-padding:40px;
+padding:40px 20px;
 text-align:center;
 line-height:2;
 }
@@ -141,7 +147,7 @@ line-height:2;
 @media(max-width:768px){
 
 h1{
-font-size:36px;
+font-size:38px;
 }
 
 .description{
@@ -155,6 +161,7 @@ width:130px;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -170,18 +177,21 @@ width:130px;
 <h2>Rwaeh Al Haramain</h2>
 
 <p class="description">
-نقدم منتجات مختارة بعناية من العطور والبخور والكحل الأصيل،
-مع نظام إلكتروني للتحقق من أصالة المنتج يضمن الثقة والجودة لعملائنا.
+
+نقدم منتجات مختارة بعناية من الكحل الأصيل والعطور والبخور،
+مع نظام إلكتروني للتحقق من أصالة المنتجات يمنح عملاءنا أعلى درجات الثقة والجودة.
+
 </p>
 
 <div class="buttons">
 
-<a class="btn btn-primary" href="verify.html">
-التحقق من المنتج
+<a href="verify.html"
+class="btn btn-primary">
+التحقق من أصالة المنتج
 </a>
 
-<a class="btn btn-outline"
-href="https://wa.me/966500000000">
+<a href="https://wa.me/966500000000"
+class="btn btn-outline">
 تواصل معنا
 </a>
 
@@ -199,30 +209,22 @@ href="https://wa.me/966500000000">
 
 <div class="card">
 <h4>منتجات أصلية</h4>
-<p>
-جميع المنتجات تخضع لنظام تحقق إلكتروني.
-</p>
+<p>جميع المنتجات مرتبطة بنظام تحقق إلكتروني.</p>
 </div>
 
 <div class="card">
 <h4>جودة موثوقة</h4>
-<p>
-منتجات مختارة بعناية وفق معايير عالية.
-</p>
+<p>نختار منتجاتنا وفق معايير دقيقة للجودة.</p>
 </div>
 
 <div class="card">
 <h4>تحقق إلكتروني</h4>
-<p>
-إمكانية التحقق من أصالة المنتج عبر QR Code.
-</p>
+<p>يمكنك التحقق من المنتج عبر QR Code.</p>
 </div>
 
 <div class="card">
-<h4>دعم العملاء</h4>
-<p>
-خدمة عملاء جاهزة للرد على الاستفسارات.
-</p>
+<h4>ثقة وضمان</h4>
+<p>هدفنا تقديم منتجات أصلية وآمنة لجميع العملاء.</p>
 </div>
 
 </div>
@@ -232,12 +234,11 @@ href="https://wa.me/966500000000">
 <footer class="footer">
 
 روائح الحرمين<br>
-
 Rwaeh Al Haramain
 
 <br><br>
 
-المدينة المنورة - المملكة العربية السعودية
+المملكة العربية السعودية
 
 </footer>
 
