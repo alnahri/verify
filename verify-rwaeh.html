@@ -304,19 +304,19 @@ batch;
 if(status.toLowerCase() === "active"){
 
 document.getElementById("verifyTitle").innerHTML =
-"✅ شهادة أصالة المنتج";
+"✅ شهادة أصالة المنتج<br>Product Authenticity Certificate";
 
 document.getElementById("statusText").innerHTML =
-'<span class="status-ok">نشط ومعتمد</span>';
+'<span class="status-ok">نشط ومعتمد<br>Active & Certified</span>';
 
 }
 else{
 
 document.getElementById("verifyTitle").innerHTML =
-"⚠️ تم إيقاف هذا الكود";
+"⚠️ تم إيقاف هذا الكود<br>Verification Code Blocked";
 
 document.getElementById("statusText").innerHTML =
-'<span class="status-bad">موقوف</span>';
+'<span class="status-bad">موقوف<br>Blocked</span>';
 
 }
 
@@ -340,10 +340,10 @@ document.getElementById("verifyTitle").innerHTML =
 function showInvalid(){
 
 document.getElementById("verifyTitle").innerHTML =
-"❌ المنتج غير أصلي أو الكود غير صالح";
+"❌ المنتج غير أصلي أو الكود غير صالح<br>Invalid Verification Code";
 
 document.getElementById("statusText").innerHTML =
-'<span class="status-bad">غير معتمد</span>';
+'<span class="status-bad">غير معتمد<br>Not Authentic</span>';
 
 }
 
