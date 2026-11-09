@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>شهادة أصالة المنتج</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Tahoma,Arial,sans-serif;
+}
+
+body{
+background:#f5f6f8;
+padding:20px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+background:#fff;
+padding:40px;
+border-radius:20px;
+box-shadow:0 5px 25px rgba(0,0,0,.08);
+}
+
+.logo{
+display:block;
+width:130px;
+margin:0 auto 20px;
+}
+
+.product-image{
+text-align:center;
+margin-bottom:25px;
+}
+
+.product-image img{
+width:300px;
+max-width:100%;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.company{
+text-align:center;
+font-size:34px;
+font-weight:bold;
+color:#183153;
+}
+
+.company-en{
+text-align:center;
+font-size:18px;
+color:#777;
+margin-top:10px;
+margin-bottom:25px;
+}
+
+.verify-box{
+background:#eaf9ef;
+border:2px solid #bce4ca;
+padding:25px;
+border-radius:15px;
+text-align:center;
+margin-bottom:25px;
+}
+
+.verify-title{
+font-size:34px;
+font-weight:bold;
+color:#0b8f48;
+}
+
+.verify-en{
+font-size:18px;
+margin-top:10px;
+color:#0b8f48;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+td{
+padding:15px;
+border:1px solid #e5e5e5;
+}
+
+.label{
+background:#fafafa;
+font-weight:bold;
+width:35%;
+}
+
+.note{
+margin-top:20px;
+padding:25px;
+background:#fafafa;
+border-radius:12px;
+text-align:center;
+line-height:2;
+color:#555;
+}
+
+.badge{
+display:inline-block;
+margin-top:15px;
+background:#0b8f48;
+color:#fff;
+padding:12px 25px;
+border-radius:30px;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="logo.png" class="logo">
+
+<div class="product-image">
+<img src="product.jpg" alt="Product">
+</div>
+
+<div class="company">
+تميز وإبداع
+</div>
+
+<div class="company-en">
+Tamayuz & Ibda
+</div>
+
+<div class="verify-box">
+
+<div id="verifyTitle" class="verify-title">
+جاري التحقق...
+</div>
+
+<div id="verifyTitleEn" class="verify-en">
+Verifying Product...
+</div>
+
+</div>
+
+<table>
+
+<tr>
+<td class="label">
+اسم المنتج<br>
+Product Name
+</td>
+
+<td>
+كحل الإثمد رؤية الأصلي<br>
+Al-'Atham Kohl, Original Version
+</td>
+</tr>
+
+<tr>
+<td class="label">
+رقم التحقق<br>
+Verification Code
+</td>
+
+<td id="productId">-</td>
+</tr>
+
+<tr>
+<td class="label">
+رقم التشغيلة<br>
+Batch
+</td>
+
+<td id="batch">-</td>
+</tr>
+
+<tr>
+<td class="label">
+الحالة<br>
+Status
+</td>
+
+<td id="statusText">-</td>
+</tr>
+
+<tr>
+<td class="label">
+تاريخ التحقق<br>
+Verification Date
+</td>
+
+<td id="verifyDate"></td>
+</tr>
+
+</table>
+
+<div class="note">
+
+تم التحقق من هذا المنتج عبر النظام الرسمي لشركة تميز وإبداع.
+
+<br><br>
+
+This product has been authenticated through the official verification system.
+
+<div class="badge">
+CERTIFIED AUTHENTIC PRODUCT
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const SHEET_CSV =
+"https://docs.google.com/spreadsheets/d/1T8CPew_isZDn9yJ6Pv5fylUtTq7Q_O77oJqX0Ngz6Qg/export?format=csv";
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+document.getElementById("productId").innerText =
+id || "غير متوفر";
+
+document.getElementById("verifyDate").innerText =
+new Date().toLocaleString('ar-SA');
+
+async function verifyCode(){
+
+if(!id){
+showInvalid();
+return;
+}
+
+try{
+
+const response = await fetch(SHEET_CSV);
+const csv = await response.text();
+
+const rows = csv.split("\n");
+
+let foundRow = null;
+
+for(let i = 1 ; i < rows.length ; i++){
+
+let cols = rows[i]
+.replace(/\r/g,"")
+.replace(/"/g,"")
+.split(",");
+
+if(cols.length >= 3){
+
+let code = cols[0].trim();
+
+if(code === id){
+
+foundRow = cols;
+break;
+
+}
+
+}
+
+}
+
+if(foundRow){
+
+const batch = foundRow[1].trim();
+const status = foundRow[2].trim();
+
+document.getElementById("batch").innerText = batch;
+
+if(status.toLowerCase() === "active"){
+
+showValid();
+
+document.getElementById("statusText").innerHTML =
+"✅ Active<br>نشط ومعتمد";
+
+}
+else{
+
+document.getElementById("verifyTitle").innerHTML =
+"⚠️ تم إيقاف هذا الكود";
+
+document.getElementById("verifyTitleEn").innerHTML =
+"Verification Code Blocked";
+
+document.getElementById("statusText").innerHTML =
+"❌ Blocked";
+
+}
+
+}
+else{
+showInvalid();
+}
+
+}
+catch(error){
+
+document.getElementById("verifyTitle").innerHTML =
+"⚠️ تعذر التحقق";
+
+document.getElementById("verifyTitleEn").innerHTML =
+"Verification Error";
+
+}
+
+}
+
+function showValid(){
+
+document.getElementById("verifyTitle").innerHTML =
+"✅ شهادة أصالة المنتج";
+
+document.getElementById("verifyTitleEn").innerHTML =
+"Product Authenticity Certificate";
+
+}
+
+function showInvalid(){
+
+document.getElementById("verifyTitle").innerHTML =
+"❌ يرجى الحذر هذا المنتج غير اصلي";
+
+document.getElementById("verifyTitleEn").innerHTML =
+"Invalid Verification Code";
+
+document.getElementById("statusText").innerHTML =
+"غير معتمد";
+
+}
+
+verifyCode();
+
+</script>
+
+</body>
+</html>
