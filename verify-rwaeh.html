@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>التحقق من أصالة المنتج | روائح الحرمين</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Tahoma,Arial,sans-serif;
+}
+
+body{
+background:#f6f7f8;
+padding:20px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+background:white;
+border-radius:20px;
+padding:40px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.logo{
+display:block;
+margin:auto;
+width:160px;
+margin-bottom:20px;
+}
+
+.verify-box{
+background:#edf9f0;
+border:2px solid #cdeed8;
+border-radius:15px;
+padding:25px;
+text-align:center;
+margin-bottom:25px;
+}
+
+.verify-title{
+font-size:34px;
+font-weight:bold;
+color:#0b8f48;
+}
+
+.verify-sub{
+margin-top:10px;
+color:#777;
+font-size:18px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+td{
+padding:15px;
+border:1px solid #e5e5e5;
+}
+
+.label{
+background:#fafafa;
+font-weight:bold;
+width:35%;
+}
+
+.note{
+margin-top:25px;
+padding:20px;
+background:#fafafa;
+border-radius:12px;
+text-align:center;
+line-height:2;
+color:#555;
+}
+
+.footer{
+margin-top:25px;
+text-align:center;
+color:#888;
+}
+
+.status-ok{
+color:#0b8f48;
+font-weight:bold;
+}
+
+.status-bad{
+color:#d32f2f;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<img src="logo.png" class="logo">
+
+<div class="verify-box">
+
+<div id="verifyTitle" class="verify-title">
+جاري التحقق...
+</div>
+
+<div class="verify-sub">
+Roaeh Al Haramain Verification System
+</div>
+
+</div>
+
+<table>
+
+<tr>
+<td class="label">اسم المنتج</td>
+<td id="productName">-</td>
+</tr>
+
+<tr>
+<td class="label">رقم التحقق</td>
+<td id="productCode">-</td>
+</tr>
+
+<tr>
+<td class="label">رقم التشغيلة</td>
+<td id="batch">-</td>
+</tr>
+
+<tr>
+<td class="label">الحالة</td>
+<td id="statusText">-</td>
+</tr>
+
+<tr>
+<td class="label">تاريخ التحقق</td>
+<td id="verifyDate">-</td>
+</tr>
+
+</table>
+
+<div class="note">
+
+تم التحقق من هذا المنتج عبر النظام الرسمي لشركة روائح الحرمين.
+
+<br><br>
+
+يرجى التأكد من مطابقة رقم التحقق الموجود على العبوة مع الرقم الظاهر في هذه الصفحة.
+
+</div>
+
+<div class="footer">
+
+روائح الحرمين<br>
+RWAEH.COM
+
+</div>
+
+</div>
+
+<script>
+
+const SHEET_CSV =
+"https://docs.google.com/spreadsheets/d/1XoncKTIGuDLASZ5pH4dcea0OveKThyWuU4V3ShgUCug/export?format=csv";
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+document.getElementById("productCode").innerText =
+id || "-";
+
+document.getElementById("verifyDate").innerText =
+new Date().toLocaleString('ar-SA');
+
+async function verifyCode(){
+
+if(!id){
+showInvalid();
+return;
+}
+
+try{
+
+const response = await fetch(SHEET_CSV);
+const csv = await response.text();
+
+const rows = csv.split("\n");
+
+let found = null;
+
+for(let i=1;i<rows.length;i++){
+
+let cols = rows[i]
+.replace(/\r/g,"")
+.replace(/"/g,"")
+.split(",");
+
+if(cols.length >= 4){
+
+let code = cols[0].trim();
+
+if(code === id){
+
+found = cols;
+break;
+
+}
+
+}
+
+}
+
+if(found){
+
+let product = found[1].trim();
+let batch = found[2].trim();
+let status = found[3].trim();
+
+document.getElementById("productName").innerText =
+product;
+
+document.getElementById("batch").innerText =
+batch;
+
+if(status.toLowerCase() === "active"){
+
+document.getElementById("verifyTitle").innerHTML =
+"✅ شهادة أصالة المنتج";
+
+document.getElementById("statusText").innerHTML =
+'<span class="status-ok">نشط ومعتمد</span>';
+
+}
+else{
+
+document.getElementById("verifyTitle").innerHTML =
+"⚠️ تم إيقاف هذا الكود";
+
+document.getElementById("statusText").innerHTML =
+'<span class="status-bad">موقوف</span>';
+
+}
+
+}
+else{
+
+showInvalid();
+
+}
+
+}
+catch(error){
+
+document.getElementById("verifyTitle").innerHTML =
+"⚠️ تعذر الاتصال بقاعدة البيانات";
+
+}
+
+}
+
+function showInvalid(){
+
+document.getElementById("verifyTitle").innerHTML =
+"❌ المنتج غير أصلي أو الكود غير صالح";
+
+document.getElementById("statusText").innerHTML =
+'<span class="status-bad">غير معتمد</span>';
+
+}
+
+verifyCode();
+
+</script>
+
+</body>
+</html>
