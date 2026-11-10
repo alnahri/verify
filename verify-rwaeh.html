@@ -303,6 +303,16 @@ batch;
 
 if(status.toLowerCase() === "active"){
 
+window.history.replaceState({}, '', '/verify-rwaeh.html');
+
+document.getElementById("verifyTitle").innerHTML =
+"✅ شهادة أصالة المنتج<br>Product Authenticity Certificate";
+
+document.getElementById("statusText").innerHTML =
+'<span class="status-ok">نشط ومعتمد<br>Active & Certified</span>';
+
+}
+
 document.getElementById("verifyTitle").innerHTML =
 "✅ شهادة أصالة المنتج<br>Product Authenticity Certificate";
 
