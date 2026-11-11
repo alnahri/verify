@@ -174,7 +174,13 @@ Status
 </td>
 <td id="statusText">-</td>
 </tr>
-
+<tr>
+<td class="label">
+عدد مرات التحقق<br>
+Verification Count
+</td>
+<td id="scanCount">0</td>
+</tr>
 <tr>
 <td class="label">
 تاريخ التحقق<br>
@@ -277,7 +283,15 @@ product;
 
 document.getElementById("batch").innerText =
 batch;
+document.getElementById("scanCount").innerText =
+scanCount;
+if(found.warning){
 
+alert(
+"⚠️ تم التحقق من هذا المنتج أكثر من 10 مرات.\n\nWarning: This product has been verified more than 10 times."
+);
+
+}  
 if(status.toLowerCase() === "active"){
 
 document.getElementById("verifyTitle").innerHTML =
