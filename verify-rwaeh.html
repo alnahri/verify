@@ -260,40 +260,17 @@ return;
 
 try{
 
-const response = await fetch(SHEET_CSV);
-const csv = await response.text();
+const response =
+await fetch(API_URL + "?id=" + encodeURIComponent(id));
 
-const rows = csv.split("\n");
+const found =
+await response.json();
+if(found.found){
 
-let found = null;
-
-for(let i=1;i<rows.length;i++){
-
-let cols = rows[i]
-.replace(/\r/g,"")
-.replace(/"/g,"")
-.split(",");
-
-if(cols.length >= 4){
-
-let code = cols[0].trim();
-
-if(code === id){
-
-found = cols;
-break;
-
-}
-
-}
-
-}
-
-if(found){
-
-let product = found[1].trim();
-let batch = found[2].trim();
-let status = found[3].trim();
+let product = found.product;
+let batch = found.batch;
+let status = found.status;
+let scanCount = found.scanCount;
 
 document.getElementById("productName").innerText =
 product;
